@@ -52,7 +52,7 @@ public class AuthController extends BaseController {
     @JSON
     public RestResponse doLogin(@QueryParam String username,
                                 @QueryParam String password,
-                                @QueryParam String remeber_me,
+                                @QueryParam String remember_me,
                                 Request request,
                                 Session session, Response response) {
 
@@ -66,8 +66,8 @@ public class AuthController extends BaseController {
 
             Users user = usersService.login(username, password);
             session.attribute(TaleConst.LOGIN_SESSION_KEY, user);
-            if (StringKit.isNotBlank(remeber_me)) {
-                TaleUtils.setCookie(response, user.getUid());
+            if (StringKit.isNotBlank(remember_me)) {
+                TaleUtils.setUserCookie(response, user.getUid());
             }
             Users temp = new Users();
             temp.setUid(user.getUid());

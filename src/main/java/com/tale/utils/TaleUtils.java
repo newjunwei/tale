@@ -61,7 +61,7 @@ public class TaleUtils {
      * @param response
      * @param uid
      */
-    public static void setCookie(Response response, Integer uid) {
+    public static void setUserCookie(Response response, Integer uid) {
         try {
             String val = Tools.enAes(uid.toString(), TaleConst.AES_SALT);
             boolean isSSL = Commons.site_url().startsWith("https");
